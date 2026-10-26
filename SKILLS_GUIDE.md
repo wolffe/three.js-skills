@@ -18,7 +18,7 @@ threejs-director                 routes any request to the skills below
 │   ├── water                    principles; ocean-water is the implementation
 │   ├── material-composition
 │   └── interior-mapping         ships windowMaterial.tsl.js
-├── procedural-geometry          parent for every built thing
+├── procedural-geometry          parent for every built thing; references/ holds the vocabulary and object catalogue
 │   ├── pipes                    ships pipe-rack.js
 │   └── signage
 ├── engineered-environments      parent for every large place

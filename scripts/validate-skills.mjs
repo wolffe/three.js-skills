@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Checks that the catalog is consistent with itself. Exit 1 on any failure.
 //   - every skills/<name>/SKILL.md has front matter with name == folder and a description
-//   - SKILL.md over 500 lines gets a warning (Claude Code's guidance), not a failure
+//   - SKILL.md over about 5,000 tokens gets a warning (Agent Skills spec guidance), not a failure
 //   - README.md has a table row for every skill, and no row for a skill that does not exist
 //   - skills/threejs-director routes to every other skill
 //   - version.json, .claude-plugin/plugin.json and the README badge agree on the version
@@ -32,8 +32,10 @@ for (const name of skills) {
   const get = (k) => fm[1].match(new RegExp(`^${k}:\\s*(.+)$`, 'm'))?.[1].trim();
   if (get('name') !== name) fail(`${file}: front matter name "${get('name')}" != folder "${name}"`);
   if (!get('description')) fail(`${file}: no description`);
-  const lines = text.split('\n').length;
-  if (lines > 500) warn(`${file}: ${lines} lines; Claude Code suggests keeping SKILL.md under 500`);
+  // The Agent Skills spec recommends a body under ~5,000 tokens; after a Claude Code
+  // compaction a re-attached skill keeps only its first 5,000. Rough estimate: 4 bytes/token.
+  const tokens = Math.round(Buffer.byteLength(text, 'utf8') / 4);
+  if (tokens > 5000) warn(`${file}: about ${tokens} tokens; move reference material into references/ to get under 5,000`);
 }
 
 const readme = read('README.md');

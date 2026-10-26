@@ -41,6 +41,10 @@ or change one.
 5. If the skill ships a source file, it imports only `three/webgpu`, `three/tsl` and,
    if it must, `jolt-physics`. Nothing reads global scene state; what only a project
    can supply comes in as a callback or an option.
+   Keep `SKILL.md` under about 5,000 tokens (roughly 20 KB). Long catalogues and
+   vocabularies go in `references/<topic>.md` with a one-paragraph pointer in the
+   body, as `procedural-geometry` does; Claude Code, Cursor and Codex all read those
+   on demand. The validator warns when a body is over the budget.
 6. Add the skill to the matching table in `README.md`, to the tree and a decision tree
    in `SKILLS_GUIDE.md`, and to the routing table in `skills/threejs-director/SKILL.md`.
 7. Run `node scripts/sync-skills.mjs` so the mirror folders for Cursor and Codex match.

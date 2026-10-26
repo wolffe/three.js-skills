@@ -77,7 +77,7 @@ which children it expects.
 
 | Skill | Use for | Ships |
 | --- | --- | --- |
-| `procedural-geometry` | the vocabulary of built geometry: sweeps, lofts, revolves, panels, fillets; trains, tracks, stations, stairs, parapets, houses, containers, buildings, pipes, cables, bridges; quality, polygon budget, LOD | |
+| `procedural-geometry` | the vocabulary of built geometry: sweeps, lofts, revolves, panels, fillets; trains, tracks, stations, stairs, parapets, houses, containers, buildings, pipes, cables, bridges; quality, polygon budget, LOD | `references/modelling-vocabulary.md`, `references/objects.md` (read on demand) |
 | `pipes` | pipework, ducts and conduits as an engineered service | `pipe-rack.js`, a parametric pipe-rack model for a procedural-models library |
 | `signage` | signs, markings, labels and decals: when a texture, when geometry | |
 
