@@ -1,0 +1,64 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>social</title>
+<style>
+  html,body{margin:0;padding:0;width:1280px;height:640px;overflow:hidden;background:#0b0f17}
+  body{font-family:"Segoe UI Variable Display","Segoe UI",system-ui,sans-serif;color:#e8edf5;position:relative}
+  .bg{position:absolute;inset:0;background:
+    radial-gradient(900px 500px at 78% 50%, rgba(56,132,255,.22), transparent 60%),
+    radial-gradient(600px 400px at 15% 90%, rgba(0,209,178,.14), transparent 60%),
+    #0b0f17}
+  .grid{position:absolute;inset:0;background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:40px 40px;
+    -webkit-mask-image:radial-gradient(800px 500px at 50% 50%,#000 30%,transparent 100%)}
+  .text{position:absolute;left:88px;top:120px;width:620px}
+  .eyebrow{font-family:"Cascadia Mono","Consolas",monospace;font-size:19px;letter-spacing:.14em;color:#6ea8ff;text-transform:uppercase}
+  h1{margin:16px 0 0;font-size:84px;line-height:1;font-weight:700;letter-spacing:-.02em;color:#fff}
+  h1 span{color:#6ea8ff}
+  .sub{margin-top:26px;font-size:26px;line-height:1.35;color:#aab6c8;font-weight:400}
+  .chips{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px;width:600px}
+  .chip{font-family:"Cascadia Mono","Consolas",monospace;font-size:16px;padding:7px 13px;border:1px solid rgba(255,255,255,.14);border-radius:999px;color:#cfd8e6;background:rgba(255,255,255,.04)}
+  .chip.k{color:#7fe0cf;border-color:rgba(127,224,207,.35)}
+  .footer{position:absolute;left:88px;bottom:46px;font-family:"Cascadia Mono","Consolas",monospace;font-size:17px;color:#6f7b8f;letter-spacing:.04em}
+  .footer b{color:#aab6c8;font-weight:500}
+  svg{position:absolute;right:70px;top:50%;transform:translateY(-50%)}
+</style></head><body>
+<div class="bg"></div><div class="grid"></div>
+<div class="text">
+  <div class="eyebrow">Claude Code · Cursor · Codex</div>
+  <h1>Three.js<span>-</span>Skills</h1>
+  <div class="sub">26 specialist skills for 3D scenes, games and simulations. WebGPU + TSL, no model files.</div>
+  <div class="chips">
+    <span class="chip">tsl-materials</span><span class="chip">procedural-geometry</span><span class="chip">character-kit</span>
+    <span class="chip">ocean-water</span><span class="chip">photo-sky</span><span class="chip">snow-weather</span>
+    <span class="chip">jolt-driving</span><span class="chip">interior-mapping</span><span class="chip k">+18 more</span>
+  </div>
+</div>
+<div class="footer"><b>three</b> 0.186 · WebGPURenderer · TSL · Jolt</div>
+
+<!-- wireframe icosahedron -->
+<svg width="470" height="470" viewBox="-1.25 -1.25 2.5 2.5" fill="none" stroke-linejoin="round" stroke-linecap="round">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ec5ff"/><stop offset="1" stop-color="#3ddbc4"/></linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation=".06"/></filter>
+  </defs>
+  <g id="ico"></g>
+</svg>
+<script>
+// icosahedron, rotated, projected orthographically; back edges dimmer
+const t=(1+Math.sqrt(5))/2;
+let V=[[-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],[0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],[t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]].map(v=>{const l=Math.hypot(...v);return v.map(x=>x/l)});
+const F=[[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
+function rot(v,ax,ay){let[x,y,z]=v;let c=Math.cos(ax),s=Math.sin(ax);[y,z]=[y*c-z*s,y*s+z*c];c=Math.cos(ay);s=Math.sin(ay);[x,z]=[x*c+z*s,-x*s+z*c];return[x,y,z]}
+V=V.map(v=>rot(v,0.55,0.35));
+const g=document.getElementById('ico');
+const edges=new Map();
+for(const f of F){const n=normal(f);for(let i=0;i<3;i++){const a=f[i],b=f[(i+1)%3];const k=a<b?a+'-'+b:b+'-'+a;edges.set(k,Math.max(edges.get(k)??-1,n))}}
+function normal(f){const[a,b,c]=f.map(i=>V[i]);const u=b.map((x,i)=>x-a[i]),w=c.map((x,i)=>x-a[i]);return u[0]*w[1]-u[1]*w[0]}
+// faces (subtle fill)
+for(const f of F){if(normal(f)<=0)continue;const p=f.map(i=>V[i]).map(v=>v[0]+','+(-v[1])).join(' ');const e=document.createElementNS('http://www.w3.org/2000/svg','polygon');e.setAttribute('points',p);e.setAttribute('fill','url(#g)');e.setAttribute('opacity',(0.05+0.08*Math.random()).toFixed(3));e.setAttribute('stroke','none');g.appendChild(e)}
+for(const[k,n]of edges){const[a,b]=k.split('-').map(Number);const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',V[a][0]);l.setAttribute('y1',-V[a][1]);l.setAttribute('x2',V[b][0]);l.setAttribute('y2',-V[b][1]);const front=n>0;l.setAttribute('stroke',front?'url(#g)':'#2f4a66');l.setAttribute('stroke-width',front?'0.03':'0.012');l.setAttribute('opacity',front?'1':'0.8');g.appendChild(l)}
+for(const v of V){const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',v[0]);c.setAttribute('cy',-v[1]);c.setAttribute('r',v[2]>0?'0.045':'0.025');c.setAttribute('fill',v[2]>0?'#fff':'#3b5a7a');c.setAttribute('stroke','none');g.appendChild(c)}
+</script>
+</body></html>

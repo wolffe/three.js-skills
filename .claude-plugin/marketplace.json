@@ -1,0 +1,17 @@
+{
+  "name": "threejs-skills",
+  "description": "Specialist Three.js skills for Claude Code: geometry, materials, environments, character, sky, weather, water, terrain and vehicles.",
+  "owner": {
+    "name": "Ciprian Popescu",
+    "url": "https://github.com/wolffe"
+  },
+  "plugins": [
+    {
+      "name": "threejs-skills",
+      "source": "./",
+      "description": "Specialist Three.js skills for 3D scenes, games and simulations on WebGPU + TSL.",
+      "category": "development",
+      "tags": ["three.js", "webgpu", "tsl", "3d"]
+    }
+  ]
+}

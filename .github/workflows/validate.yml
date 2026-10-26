@@ -1,0 +1,24 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Mirror sync runs clean
+        run: node scripts/sync-skills.mjs
+      - name: Catalog is consistent
+        run: node scripts/validate-skills.mjs
+      - name: Shipped source files parse
+        run: |
+          set -e
+          for f in skills/*/*.js skills/*/*.mjs; do
+            node --check "$f"
+          done

@@ -1,0 +1,11 @@
+# Generated mirrors of skills/ for tools opened directly in this repo.
+# Rebuilt by scripts/sync-skills.mjs (run by the Claude Code hook and the pre-commit hook).
+.claude/skills/
+.agents/skills/
+.cursor/skills/
+
+# Local tool state
+.claude/settings.local.json
+node_modules/
+.DS_Store
+Thumbs.db

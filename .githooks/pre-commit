@@ -1,0 +1,6 @@
+#!/bin/sh
+# Keeps the tool mirrors fresh and refuses a commit whose catalog is inconsistent.
+# Enabled by: git config core.hooksPath .githooks
+root="$(git rev-parse --show-toplevel)"
+node "$root/scripts/sync-skills.mjs" >/dev/null || exit 1
+node "$root/scripts/validate-skills.mjs" || exit 1

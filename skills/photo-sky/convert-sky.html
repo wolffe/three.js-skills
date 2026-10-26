@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sky conversion</title>
+<style>
+  body { margin: 16px; font: 13px/1.4 system-ui, sans-serif; background: #15181c; color: #dde2e8; }
+  figure { margin: 0 0 18px; } img { width: 100%; max-width: 1024px; display: block; } a { color: #9cc4ff; }
+  pre { white-space: pre-wrap; margin: 4px 0; }
+</style>
+</head>
+<body>
+<div id="log">converting...</div>
+<script>
+// Equirect sky photo -> dome texture for photo-sky.tsl.js. Served by convert-sky.mjs (headless run or --keep).
+// Query: ?list=<url of list.json>&w=4096&q=0.9. list.json = [{ name, src, night, moon, sunCol, sunRow, shiftPx }].
+// Per entry:
+//   1. top half of the 2:1 tone-mapped JPG/PNG -> W x W/4 canvas (the dome never shows below the horizon)
+//   2. day: sun = circular-mean centroid of clipped-white pixels (all channels >= 250, more than 8 of them); else the
+//      brightest 33x33 box (a veiled sun); sunCol/sunRow (output pixels; the moon on a night) override
+//   3. rotate horizontally so the sun sits at column W/2 (photo-sky turns column 0.5 onto the sun azimuth)
+//      night: no sun; moon: true rotates the brightest box (the moon) onto column 0, the sun's antipode, where the
+//      moon light is; shiftPx forces any rotation
+//   4. copy row H-9 over rows H-8..H-1 (kills the anti-aliased ground edge at the horizon)
+//   5. encode webp at q; report sunElevDeg = 90 - (row + 0.5) * 90 / H, the value for the slot's sunElev
+// window.__out[name] = { stats, dataUrl, preview }; window.__done = true when finished.
+const qs = new URLSearchParams(location.search);
+const W = +(qs.get('w') || 4096), H = W / 4, Q = +(qs.get('q') || 0.9);
+const load = (src) => new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => rej(new Error('load ' + src)); im.src = src; });
+const brightestBox = (d) => { // coarse 8 px grid, 33x33 box sampled every 4 px, wraps horizontally
+  let best = -1, bx = 0, by = 0;
+  for (let y = 16; y < H - 16; y += 8) for (let x = 0; x < W; x += 8) {
+    let t = 0;
+    for (let yy = -16; yy <= 16; yy += 4) for (let xx = -16; xx <= 16; xx += 4) { const o = ((y + yy) * W + ((x + xx + W) % W)) * 4; t += d[o] + d[o + 1] + d[o + 2]; }
+    if (t > best) { best = t; bx = x; by = y; }
+  }
+  return [bx, by];
+};
+window.__out = {}; window.__done = false;
+(async () => {
+  const list = await (await fetch(qs.get('list') || 'list.json')).json();
+  const log = document.getElementById('log'); log.textContent = '';
+  for (const e of list) {
+    const im = await load(e.src);
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d', { willReadFrequently: true });
+    g.drawImage(im, 0, 0, im.naturalWidth, im.naturalHeight / 2, 0, 0, W, H); // top half only
+    const d = g.getImageData(0, 0, W, H).data;
+    let n = 0, sx = 0, sy = 0, cy = 0, lum = 0;
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const o = (y * W + x) * 4; lum += 0.2126 * d[o] + 0.7152 * d[o + 1] + 0.0722 * d[o + 2];
+      if (!e.night && d[o] >= 250 && d[o + 1] >= 250 && d[o + 2] >= 250) { const a = x / W * 2 * Math.PI; n++; sx += Math.sin(a); sy += Math.cos(a); cy += y; }
+    }
+    let col = null, row = null, mode = 'none', target = W / 2;
+    if (e.sunCol != null) { col = e.sunCol; row = e.sunRow ?? null; mode = 'given'; }
+    else if (!e.night && n > 8) { col = (Math.atan2(sx, sy) / (2 * Math.PI) * W + W) % W; row = cy / n; mode = 'clipped'; }
+    else if (!e.night) { [col, row] = brightestBox(d); mode = 'brightest-box'; }
+    else if (e.moon) { [col, row] = brightestBox(d); mode = 'moon-box'; }
+    if (e.night && e.moon) target = 0;
+    const shift = e.shiftPx != null ? e.shiftPx : col != null ? Math.round(target - col) : 0;
+    const s = ((shift % W) + W) % W;
+    const r = document.createElement('canvas'); r.width = W; r.height = H;
+    const rg = r.getContext('2d');
+    rg.drawImage(c, 0, 0, W - s, H, s, 0, W - s, H);
+    rg.drawImage(c, W - s, 0, s, H, 0, 0, s, H);
+    const edge = rg.getImageData(0, H - 9, W, 1);
+    for (let y = H - 8; y < H; y++) rg.putImageData(edge, 0, y);
+    const blob = await new Promise((res) => r.toBlob(res, 'image/webp', Q));
+    const dataUrl = await new Promise((res) => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(blob); });
+    const pv = document.createElement('canvas'); pv.width = 1024; pv.height = 256; pv.getContext('2d').drawImage(r, 0, 0, 1024, 256);
+    const preview = pv.toDataURL('image/png');
+    const stats = { natural: im.naturalWidth + 'x' + im.naturalHeight, mode, clipped: n,
+      col: col == null ? null : +col.toFixed(1), shift,
+      sunElevDeg: !e.night && row != null ? +(90 - (row + 0.5) * 90 / H).toFixed(2) : null,
+      moonElevDeg: e.night && row != null ? +(90 - (row + 0.5) * 90 / H).toFixed(2) : null,
+      meanLum: +(lum / (W * H) / 255).toFixed(3), bytes: blob.size };
+    window.__out[e.name] = { stats, dataUrl, preview };
+    const f = document.createElement('figure');
+    f.innerHTML = `<img src="${preview}" alt=""><pre>${e.name} ${JSON.stringify(stats)}</pre><a download="${e.name}.webp" href="${dataUrl}">${e.name}.webp</a>`;
+    log.appendChild(f);
+  }
+  window.__done = true;
+})().catch((err) => { window.__err = String(err); window.__done = true; document.getElementById('log').textContent = String(err); });
+</script>
+</body>
+</html>
