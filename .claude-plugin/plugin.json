@@ -1,7 +1,7 @@
 {
   "name": "threejs-skills",
   "displayName": "Three.js Skills",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Specialist Three.js skills for 3D scenes, games and simulations: procedural geometry, TSL node materials, engineered environments, a playable character, sky, weather, grass, ocean, terrain shade and Jolt vehicles. WebGPU + TSL, Three.js 0.186.1.",
   "author": {
     "name": "Ciprian Popescu",

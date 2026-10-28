@@ -19,7 +19,7 @@ threejs-director                 routes any request to the skills below
 │   ├── material-composition
 │   └── interior-mapping         ships scripts/windowMaterial.tsl.js
 ├── procedural-geometry          parent for every built thing; references/ holds the vocabulary and object catalogue
-│   ├── pipes                    ships scripts/pipe-rack.js
+│   ├── pipes                    ships scripts/pipe-rack.js, procedural-models.js
 │   └── signage
 ├── engineered-environments      parent for every large place
 │   ├── station-maglev

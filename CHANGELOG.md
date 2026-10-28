@@ -6,8 +6,12 @@ All notable changes to this catalog are recorded here. The format follows
 
 ## [Unreleased]
 
+## [0.0.2] - 2026-10-28
+
 ### Added
 
+- `pipes` ships `scripts/procedural-models.js`, the library `pipe-rack.js` registers with,
+  so the kit runs as shipped.
 - `threejs-director`, a router skill that reads a request, picks the specialist skills
   and fixes their order.
 - Claude Code plugin manifest and self-hosted marketplace in `.claude-plugin/`, so the

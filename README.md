@@ -7,7 +7,7 @@
 **Specialist Three.js skills for Cursor, Claude Code, Codex and ChatGPT.**
 **Geometry, shaders, materials, particles, fluids, and more.**
 
-[![Version](https://img.shields.io/badge/version-0.0.1-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-0.0.2-blue.svg)](version.json)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-26-orange.svg)](skills/)
 [![Three.js](https://img.shields.io/badge/three.js-0.186.1-black.svg)](https://threejs.org/)
@@ -107,7 +107,7 @@ Projects built with these skills, in the browser, on Three.js and WebGPU:
 | Skill | Use for | Ships |
 | --- | --- | --- |
 | `procedural-geometry` | the vocabulary of built geometry: sweeps, lofts, revolves, panels, fillets; trains, tracks, stations, stairs, parapets, houses, containers, buildings, pipes, cables, bridges; quality, polygon budget, LOD | `references/modelling-vocabulary.md`, `references/objects.md` (read on demand) |
-| `pipes` | pipework, ducts and conduits as an engineered service | `scripts/pipe-rack.js`, a parametric pipe-rack model for a procedural-models library |
+| `pipes` | pipework, ducts and conduits as an engineered service | `scripts/pipe-rack.js`, a parametric pipe-rack model, and `scripts/procedural-models.js`, the library it registers with |
 | `signage` | signs, markings, labels and decals: when a texture, when geometry | |
 
 ### Environments
@@ -316,9 +316,10 @@ adjectives, say what was run.
   walking, `jolt-physics`. The character kit was written against Jolt 1.1.0.
 - The outdoor kits have no dependencies beyond `three/webgpu` and `three/tsl`, except
   `jolt-driving`, which targets `jolt-physics` 1.0.0 (wasm-compat).
-- `scripts/pipe-rack.js` is a model definition for a small procedural-models library (parametric
-  models with three levels of detail, drawn as instanced fields by distance). The library
-  itself is not in this catalog; the skill describes its interface in one paragraph.
+- `scripts/pipe-rack.js` is a model definition for `scripts/procedural-models.js`, shipped
+  beside it: a geometry kernel, construction parts and a model registry, with three levels
+  of detail drawn as instanced fields by distance. The library depends only on
+  `three/webgpu` and `three/tsl`; copy both files together.
 
 ### How much has been run
 

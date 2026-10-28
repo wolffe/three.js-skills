@@ -13,9 +13,9 @@
  *   import { pipeRack } from './pipe-rack.js';  registerModel(pipeRack);
  *   scene.add(createModel('pipes', { pipes: 3, length: 12, diameter: 0.4 }));
  *
- * It is written against the kernel of a procedural-models library (procedural-models.js: Geo, prism,
- * cyl, tube, box, rbox, boltsAt, MAT, the matrix helpers). That library is the owner's and is not
- * shipped here; registerModel(pipeRack) adds this model to it.
+ * It is written against the kernel of the procedural-models library shipped beside it (procedural-models.js:
+ * Geo, prism, cyl, tube, box, rbox, boltsAt, MAT, the matrix helpers); registerModel(pipeRack) adds this
+ * model to it. Copy both files into the project together.
  * Written against three 0.186.1.
  */
 import { Geo, P2, prism, cyl, tube, box, rbox, boltsAt, MAT, T, X, RX, HALF, TAU } from './procedural-models.js';
