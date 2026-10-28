@@ -19,6 +19,6 @@ jobs:
       - name: Shipped source files parse
         run: |
           set -e
-          for f in skills/*/*.js skills/*/*.mjs; do
+          for f in skills/*/*/scripts/*.js skills/*/*/scripts/*.mjs; do
             node --check "$f"
           done

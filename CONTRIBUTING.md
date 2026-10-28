@@ -1,8 +1,12 @@
 # Contributing
 
-Thanks for helping. This catalog is a set of Claude Code skills, each a folder in
-`skills/` with a `SKILL.md` and, sometimes, a source file beside it. Here is how to add
-or change one.
+Thanks for helping. This catalog is a set of agent skills, each a folder at
+`skills/<category>/<name>/` with a `SKILL.md` and, sometimes, a `scripts/` folder of
+source files and a `references/` folder of longer material. The layout and the front
+matter follow the
+[contributing rules](https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/main/CONTRIBUTING.md)
+of awesome-gamedev-agent-skills, so a skill here can be submitted there unchanged;
+`scripts/validate-skills.mjs` enforces them. Here is how to add or change one.
 
 ## Ground rules
 
@@ -20,8 +24,11 @@ or change one.
 
 ## Adding a skill
 
-1. Create `skills/<name>/SKILL.md`. The name is lowercase, hyphenated, and matches the
-   folder.
+1. Create `skills/<category>/<name>/SKILL.md`. The categories are `orchestration`,
+   `materials`, `geometry`, `environments`, `character`, `outdoor` and `physics`. The
+   name is lowercase letters, digits and single hyphens, 64 characters or fewer, and
+   matches the folder. The front matter holds only `name` and `description`; the
+   description is 1024 characters or fewer and contains no `<` or `>`.
 2. Start with the front matter:
 
    ```markdown
@@ -38,16 +45,22 @@ or change one.
 4. Structure the body the way the siblings do: what it is, how to think about it, the
    measurements, the code, what to avoid. Look at `glass` for a material, `pipes` for
    geometry, `card-grass` for a kit that ships source.
-5. If the skill ships a source file, it imports only `three/webgpu`, `three/tsl` and,
-   if it must, `jolt-physics`. Nothing reads global scene state; what only a project
-   can supply comes in as a callback or an option.
-   Keep `SKILL.md` under about 5,000 tokens (roughly 20 KB). Long catalogues and
-   vocabularies go in `references/<topic>.md` with a one-paragraph pointer in the
-   body, as `procedural-geometry` does; Claude Code, Cursor and Codex all read those
-   on demand. The validator warns when a body is over the budget.
+5. If the skill ships a source file, it lives in `scripts/` and imports only
+   `three/webgpu`, `three/tsl` and, if it must, `jolt-physics`. Nothing reads global
+   scene state; what only a project can supply comes in as a callback or an option. A
+   helper that is run rather than imported answers `--help`. A skill folder holds only
+   `SKILL.md`, `scripts/`, `references/`, `assets/` and `agents/`.
+   Keep `SKILL.md` under 500 lines (the validator fails above that) and under about
+   5,000 tokens, roughly 20 KB (the validator warns). Long catalogues and vocabularies
+   go in `references/<topic>.md` with a one-paragraph pointer in the body, as
+   `procedural-geometry` does; Claude Code, Cursor and Codex all read those on demand.
+   Every `scripts/`, `references/` or `assets/` path named in the body must exist.
 6. Add the skill to the matching table in `README.md`, to the tree and a decision tree
-   in `SKILLS_GUIDE.md`, and to the routing table in `skills/threejs-director/SKILL.md`.
-7. Run `node scripts/sync-skills.mjs` so the mirror folders for Cursor and Codex match.
+   in `SKILLS_GUIDE.md`, to the routing table in
+   `skills/orchestration/threejs-director/SKILL.md`, and to the `skills` lists in
+   `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`.
+7. Run `node scripts/validate-skills.mjs`, then `node scripts/sync-skills.mjs` so the
+   mirror folders for Cursor and Codex match.
 8. Add a line under "Unreleased" in `CHANGELOG.md`. Do not change `version.json`; the
    maintainer bumps the version at release.
 

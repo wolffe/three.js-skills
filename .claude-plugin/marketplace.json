@@ -9,9 +9,43 @@
     {
       "name": "threejs-skills",
       "source": "./",
+      "strict": false,
       "description": "Specialist Three.js skills for 3D scenes, games and simulations on WebGPU + TSL.",
       "category": "development",
-      "tags": ["three.js", "webgpu", "tsl", "3d"]
+      "tags": [
+        "three.js",
+        "webgpu",
+        "tsl",
+        "3d"
+      ],
+      "skills": [
+        "./skills/character/character-camera",
+        "./skills/character/character-input",
+        "./skills/character/character-kit",
+        "./skills/character/character-model",
+        "./skills/character/character-walking",
+        "./skills/environments/engineered-environments",
+        "./skills/environments/megacity",
+        "./skills/environments/station-maglev",
+        "./skills/geometry/pipes",
+        "./skills/geometry/procedural-geometry",
+        "./skills/geometry/signage",
+        "./skills/materials/glass",
+        "./skills/materials/interior-mapping",
+        "./skills/materials/material-composition",
+        "./skills/materials/metal",
+        "./skills/materials/paint",
+        "./skills/materials/rust",
+        "./skills/materials/tsl-materials",
+        "./skills/materials/water",
+        "./skills/orchestration/threejs-director",
+        "./skills/outdoor/card-grass",
+        "./skills/outdoor/far-shade",
+        "./skills/outdoor/ocean-water",
+        "./skills/outdoor/photo-sky",
+        "./skills/outdoor/snow-weather",
+        "./skills/physics/jolt-driving"
+      ]
     }
   ]
 }

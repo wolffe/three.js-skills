@@ -17,26 +17,30 @@ threejs-director                 routes any request to the skills below
 │   ├── rust
 │   ├── water                    principles; ocean-water is the implementation
 │   ├── material-composition
-│   └── interior-mapping         ships windowMaterial.tsl.js
+│   └── interior-mapping         ships scripts/windowMaterial.tsl.js
 ├── procedural-geometry          parent for every built thing; references/ holds the vocabulary and object catalogue
-│   ├── pipes                    ships pipe-rack.js
+│   ├── pipes                    ships scripts/pipe-rack.js
 │   └── signage
 ├── engineered-environments      parent for every large place
 │   ├── station-maglev
 │   └── megacity
 ├── character-kit                parent for the player
-│   ├── character-walking        ships walking-controller.js
-│   ├── character-camera         ships character-camera.js
-│   ├── character-model          ships character-model.js
-│   └── character-input          ships character-input.js
+│   ├── character-walking        ships scripts/walking-controller.js
+│   ├── character-camera         ships scripts/character-camera.js
+│   ├── character-model          ships scripts/character-model.js
+│   └── character-input          ships scripts/character-input.js
 └── outdoor kits                 standalone, each ships its source
-    ├── photo-sky                photo-sky.tsl.js, convert-sky.html, convert-sky.mjs
-    ├── snow-weather             blizzard.tsl.js, weather-spells.js
-    ├── card-grass               card-grass.tsl.js, make-atlas.md
-    ├── ocean-water              ocean.tsl.js, planar-reflection.js
-    ├── far-shade                far-shade.tsl.js
-    └── jolt-driving             jolt-world.js, jolt-vehicle.js, jolt-towing.js
+    ├── photo-sky                scripts/photo-sky.tsl.js, convert-sky.html, convert-sky.mjs
+    ├── snow-weather             scripts/blizzard.tsl.js, weather-spells.js
+    ├── card-grass               scripts/card-grass.tsl.js, references/make-atlas.md
+    ├── ocean-water              scripts/ocean.tsl.js, planar-reflection.js
+    ├── far-shade                scripts/far-shade.tsl.js
+    └── jolt-driving             scripts/jolt-world.js, jolt-vehicle.js, jolt-towing.js
 ```
+
+On disk the skills sit in category folders, `skills/<category>/<name>/`: `orchestration`,
+`materials`, `geometry`, `environments`, `character`, `outdoor` (sky, weather, grass, water,
+terrain shade) and `physics`. The tree above is by parent, which is the order they load in.
 
 A parent is read before its children. A child can be used alone when the request is
 narrow (one material, one camera), but the parent holds the measurements and the
@@ -135,7 +139,7 @@ Pairs that need a decision before both are loaded:
 
 ## Shipped source files
 
-Fourteen skills ship a `.js` file beside the instructions. They import only
+Twelve skills ship source files in a `scripts/` folder beside the instructions. They import only
 `three/webgpu`, `three/tsl` and, for the two physics kits, `jolt-physics`. Copy the file
 into the project; do not import it from the skill folder. Each file's first comment says
 what it exports and what the caller must supply (a height function, a surface type, a
