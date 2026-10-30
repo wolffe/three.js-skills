@@ -1,6 +1,6 @@
 ---
 name: pipes
-description: Create believable procedural pipework, ducts and conduits in Three.js: mains, branches, bends, flanges, valves, supports and hangers, colour-coded by service. Use for any pipe, duct, cable tray or conduit on a structure, a building, a plant, a ship or a street.
+description: "Create believable procedural pipework, ducts and conduits in Three.js: mains, branches, bends, flanges, valves, supports and hangers, colour-coded by service. Use for any pipe, duct, cable tray or conduit on a structure, a building, a plant, a ship or a street."
 ---
 
 # Pipes

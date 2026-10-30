@@ -1,6 +1,6 @@
 ---
 name: character-input
-description: Keyboard actions and pointer look for a character controller in the browser: rebindable action map, edge-triggered presses, drag or pointer-lock look deltas, right-button turn, wheel steps. Use when wiring WASD/jump/crouch/sprint and mouse look into any Three.js scene. Ships character-input.js.
+description: "Keyboard actions and pointer look for a character controller in the browser: rebindable action map, edge-triggered presses, drag or pointer-lock look deltas, right-button turn, wheel steps. Use when wiring WASD/jump/crouch/sprint and mouse look into any Three.js scene. Ships character-input.js."
 ---
 
 # Character input

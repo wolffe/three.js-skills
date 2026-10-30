@@ -6,6 +6,20 @@ All notable changes to this catalog are recorded here. The format follows
 
 ## [Unreleased]
 
+## [0.0.3] - 2026-10-30
+
+### Added
+
+- One-line install for every skills-aware agent (Cursor, Codex, Copilot, Claude Code and
+  others) at the top of the README Quick Start:
+  `npx skills@latest add wolffe/three.js-skills`, with the skills.sh listing.
+
+### Fixed
+
+- `character-input` and `pipes` were missing from `npx skills add` installs and from the
+  skills.sh listing: their `description` contained an unquoted `: `, which is not valid
+  YAML. The values are now quoted, so all 26 skills install.
+
 ## [0.0.2] - 2026-10-28
 
 ### Added

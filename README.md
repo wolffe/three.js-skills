@@ -7,7 +7,7 @@
 **Specialist Three.js skills for Cursor, Claude Code, Codex and ChatGPT.**
 **Geometry, shaders, materials, particles, fluids, and more.**
 
-[![Version](https://img.shields.io/badge/version-0.0.2-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-0.0.3-blue.svg)](version.json)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-26-orange.svg)](skills/)
 [![Three.js](https://img.shields.io/badge/three.js-0.186.1-black.svg)](https://threejs.org/)
@@ -38,6 +38,17 @@ of awesome-gamedev-agent-skills, so any skill here can be submitted there as it 
 
 ## Quick Start
 
+**Any agent, one line** (Cursor, Codex, Copilot, Claude Code, Windsurf, Cline, Gemini CLI and
+others, via the [skills](https://skills.sh) CLI):
+
+```bash
+npx skills@latest add wolffe/three.js-skills
+```
+
+The CLI asks which skills and which agents to install to; add `--all --yes` to take every
+skill for every agent it finds in the project, or `--global` to install for every project.
+Listing: [skills.sh/wolffe/three.js-skills](https://skills.sh/wolffe/three.js-skills).
+
 **Claude Code, as a plugin** (all 26 skills, invoked as `/threejs-skills:<name>`):
 
 ```
@@ -45,18 +56,12 @@ of awesome-gamedev-agent-skills, so any skill here can be submitted there as it 
 /plugin install threejs-skills@threejs-skills
 ```
 
-**Claude Code, copied into a project** (`~/.claude/skills/` for every project):
+**By hand.** Claude Code reads `.claude/skills/` in a project (`~/.claude/skills/` for every
+project); Cursor and Codex read `.agents/skills/` (`~/.agents/skills/`):
 
 ```bash
 git clone https://github.com/wolffe/three.js-skills.git
 cp -r three.js-skills/skills/*/* /path/to/project/.claude/skills/
-```
-
-**Cursor and Codex** read `.agents/skills/` in a project, or `~/.agents/skills/` for
-every project:
-
-```bash
-git clone https://github.com/wolffe/three.js-skills.git
 cp -r three.js-skills/skills/*/* /path/to/project/.agents/skills/
 ```
 
