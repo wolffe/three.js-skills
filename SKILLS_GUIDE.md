@@ -1,6 +1,6 @@
 # Skills guide
 
-How the 26 skills in `skills/` relate, which one to load for a given request, and how
+How the 28 skills in `skills/` relate, which one to load for a given request, and how
 they combine. The catalog README has the full table with one line per skill; this file
 is for choosing.
 
@@ -24,6 +24,8 @@ threejs-director                 routes any request to the skills below
 ├── engineered-environments      parent for every large place
 │   ├── station-maglev
 │   └── megacity
+├── lighting                     the general light skill: sun, fixtures, clustered point and spot lights
+│   └── indirect-lighting        probe grids and light maps for the bounce
 ├── character-kit                parent for the player
 │   ├── character-walking        ships scripts/walking-controller.js
 │   ├── character-camera         ships scripts/character-camera.js
@@ -39,8 +41,8 @@ threejs-director                 routes any request to the skills below
 ```
 
 On disk the skills sit in category folders, `skills/<category>/<name>/`: `orchestration`,
-`materials`, `geometry`, `environments`, `character`, `outdoor` (sky, weather, grass, water,
-terrain shade) and `physics`. The tree above is by parent, which is the order they load in.
+`materials`, `geometry`, `environments`, `lighting`, `character`, `outdoor` (sky, weather,
+grass, water, terrain shade) and `physics`. The tree above is by parent, which is the order they load in.
 
 A parent is read before its children. A child can be used alone when the request is
 narrow (one material, one camera), but the parent holds the measurements and the
@@ -98,6 +100,17 @@ What is the player?
 Both? Build one Jolt world with jolt-driving and pass it to the character adapter.
 ```
 
+### "I need light"
+
+```
+What has to be lit?
+├── the sun, the sky, a few fixtures                     → lighting (sun from photo-sky)
+├── hundreds of fixtures: a street, a concourse, a hall  → lighting, its ClusteredLighting section
+├── a room, a canyon, under a canopy: the bounce         → indirect-lighting (LightProbeGrid)
+├── static walls that need crisp bounce detail          → indirect-lighting (LightMapper from the grid)
+└── hills and trees shading far terrain                  → far-shade
+```
+
 ### "I need an outdoor scene"
 
 ```
@@ -127,6 +140,8 @@ Pairs that are always loaded together:
 | `pipes` | `metal`, `paint` |
 | `interior-mapping` on a near facade | `glass` |
 | `snow-weather` | `photo-sky` |
+| `indirect-lighting` | `lighting` |
+| `station-maglev` or `megacity` at night | `lighting` |
 | any `character-*` child used alone | the interface section of `character-kit` |
 
 Pairs that need a decision before both are loaded:

@@ -121,7 +121,7 @@ Steps:
 - **One `InstancedMesh` per tile**, not one ring for the world: each tile gets its own frustum culling in the main pass, and a write touches only its own buffers.
 - **Per-mesh geometry.** `aCard` is an `InstancedBufferAttribute`; it cannot live on a geometry shared by meshes with different contents, so each tile clones the quad (4 vertices: nothing).
 - **Parked, never disposed.** Destroying an instance buffer that a queued command buffer still uses is a WebGPU error ("used in submit while destroyed"). Release = detach, count 1, zero matrix, upload one matrix (`parkGrassTile`).
-- **Prewarm the peak count at load.** A new `InstancedMesh` mid-session costs a render-object setup in every render context the grass appears in; reused meshes cost a buffer upload only.
+- **Prewarm the peak count at load.** A new `InstancedMesh` mid-session costs a render-object setup (bind groups) in every render context the grass appears in, though since r187 the node build itself is shared by attachment state and one `InstancedMesh` per material compiles for all; reused meshes cost a buffer upload only.
 - **Upload ranges.** Only the written prefix: `addUpdateRange(0, count * 16)` on the matrices, `count * 2` on `aCard`. A full 32k-slot upload is 2 MB per tile.
 - **Bounds by hand.** `computeBoundingSphere()` includes the unused slots at the tile origin; the min/max of the written cards plus 2.5 m (card size + sway) is exact.
 - **Cap per tile.** At spacing 1.03 m the grid holds 0.94 cells/m^2 and the default density keeps ~0.64/m^2 before `accept`: 41.7k on a bare 256 m tile, ~27k measured max with real rejection rules (roads, water, slope, rock). Cap 32000 x 64 B = 2 MB of matrices per tile, 51 MB over 25 tiles. Overflow warns and drops the tail.

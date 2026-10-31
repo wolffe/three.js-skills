@@ -333,6 +333,8 @@ Keep physical fixtures, emissive materials and actual illumination conceptually 
 
 Use TSL emissive nodes (`emissiveNode`) for emissive surfaces.
 
+Hundreds of real point and spot lights (street rows, entrances, under-bridge, signs that light the pavement) run through r187 `ClusteredLighting`: the `lighting` skill has the setup and the per-light cutoffs; `indirect-lighting` has probe grids for street canyons and podium undersides.
+
 ## Signage
 
 Use the signage skill.
@@ -448,6 +450,7 @@ For Three.js:
 - LOD
 - stream districts
 - cheap distant buildings
+- `MeshletDrawingPipeline` for the whole city when it is vertex-bound: one line on the renderer, GPU culling and LOD per 64-triangle cluster (`engineered-environments`, Drawing at scale)
 - avoid unique geometry for every window
 - avoid thousands of decorative meshes when instancing or textures suffice
 

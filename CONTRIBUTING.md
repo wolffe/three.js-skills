@@ -25,7 +25,7 @@ of awesome-gamedev-agent-skills, so a skill here can be submitted there unchange
 ## Adding a skill
 
 1. Create `skills/<category>/<name>/SKILL.md`. The categories are `orchestration`,
-   `materials`, `geometry`, `environments`, `character`, `outdoor` and `physics`. The
+   `materials`, `geometry`, `environments`, `lighting`, `character`, `outdoor` and `physics`. The
    name is lowercase letters, digits and single hyphens, 64 characters or fewer, and
    matches the folder. The front matter holds only `name` and `description`; the
    description is 1024 characters or fewer and contains no `<` or `>`.

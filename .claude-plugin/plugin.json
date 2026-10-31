@@ -1,7 +1,7 @@
 {
   "name": "threejs-skills",
   "displayName": "Three.js Skills",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Specialist Three.js skills for 3D scenes, games and simulations: procedural geometry, TSL node materials, engineered environments, a playable character, sky, weather, grass, ocean, terrain shade and Jolt vehicles. WebGPU + TSL, Three.js 0.187.0.",
   "author": {
     "name": "Ciprian Popescu",
@@ -32,6 +32,8 @@
     "./skills/geometry/pipes",
     "./skills/geometry/procedural-geometry",
     "./skills/geometry/signage",
+    "./skills/lighting/indirect-lighting",
+    "./skills/lighting/lighting",
     "./skills/materials/glass",
     "./skills/materials/interior-mapping",
     "./skills/materials/material-composition",

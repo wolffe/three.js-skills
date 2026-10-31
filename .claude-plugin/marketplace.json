@@ -30,6 +30,8 @@
         "./skills/geometry/pipes",
         "./skills/geometry/procedural-geometry",
         "./skills/geometry/signage",
+        "./skills/lighting/indirect-lighting",
+        "./skills/lighting/lighting",
         "./skills/materials/glass",
         "./skills/materials/interior-mapping",
         "./skills/materials/material-composition",

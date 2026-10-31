@@ -6,6 +6,37 @@ All notable changes to this catalog are recorded here. The format follows
 
 ## [Unreleased]
 
+## [0.0.5] - 2026-10-31
+
+### Added
+
+- A `lighting` category with two skills. `lighting` is the general light skill: the three
+  layers (illumination, emission, fixtures), base and local light rules with cutoffs, the r187
+  `ClusteredLighting` setup and its limits (what is clustered, the silent fallbacks, capacity),
+  placement rules of thumb. `indirect-lighting` covers the r187 `LightProbeGrid` (sizing,
+  spacing, bake options, ranged bakes, priority) and `LightMapper` with `unwrapUVs` (uv1 atlas,
+  samples, what the map stores, counting nothing twice). Neither has been run; the values are
+  the r187 examples' settings and are marked as such.
+- `engineered-environments`: a Drawing at scale section with the r187 `MeshletDrawingPipeline`
+  as a one-line option: what it does, what qualifies and what falls back, LOD chains and far
+  materials, static shadows, when it pays, how to check.
+- `water`: a Reflections section comparing environment-only, screen-space reflections and the
+  planar mirror, with the r187 `ssr()` recipe (MRT scene pass, `reflectNonMetals: true` for
+  water, roughness as blur, the stochastic and denoised path, limits).
+
+### Changed
+
+- `megacity` and `station-maglev` point to `lighting` for clustered fixtures and to
+  `indirect-lighting` for the bounce; `megacity` lists the meshlet pipeline under Performance.
+- `ocean-water`: When to use names screen-space reflections as the alternative to the mirror for
+  low, short-range views.
+- `snow-weather`, `ocean-water`, `card-grass`: the warm-up advice is rewritten for r187. One plain
+  `compileAsync(scene, camera)` with no render target set covers the scene pass and the HalfFloat mirrors
+  (builds and pipelines are keyed by attachment state); shadow and reflector passes still need one real
+  render behind the loader. Two measured traps are recorded: `compileAsync` is not re-entrant, and a compile
+  with a render target set leaves that target on the renderer between items. The two mirror scripts set
+  `texture.colorSpace = LinearSRGBColorSpace` on their targets so the pipeline keys match the compile.
+
 ## [0.0.4] - 2026-10-31
 
 ### Changed

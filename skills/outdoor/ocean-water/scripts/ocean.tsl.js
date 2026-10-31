@@ -658,6 +658,10 @@ export class Ocean {
 
   /** Reflection pass: top-level, AFTER update() and BEFORE the scene render, every frame the sea shows. */
   renderMirror(renderer, camera) {
+    { // r187 pipeline keys include the target's colour space: match the renderer's framebuffer target so a null-target compileAsync builds this pass's pipelines
+      const refl = this.mirror.reflector, rt = refl.getRenderTarget(refl.getVirtualCamera(camera));
+      if (rt.texture.colorSpace !== THREE.LinearSRGBColorSpace) rt.texture.colorSpace = THREE.LinearSRGBColorSpace;
+    }
     if (!this.mesh.visible) return false;
     camera.updateMatrixWorld();
     // Cloned once per camera by three; only its matrices refresh, so the mask set here holds.

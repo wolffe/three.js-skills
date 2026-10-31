@@ -1,6 +1,6 @@
 ---
 name: threejs-director
-description: The entry point for any Three.js scene, game or simulation request. Use first when a task spans more than one area (geometry, materials, environments, a playable character, sky, weather, grass, water, terrain shade, vehicles) or when it is not obvious which specialist skill applies. Reads the request, picks the skills, fixes their order and hands over; writes no code of its own.
+description: The entry point for any Three.js scene, game or simulation request. Use first when a task spans more than one area (geometry, materials, environments, lighting, a playable character, sky, weather, grass, water, terrain shade, vehicles) or when it is not obvious which specialist skill applies. Reads the request, picks the skills, fixes their order and hands over; writes no code of its own.
 ---
 
 # Three.js director
@@ -34,6 +34,8 @@ first. A parent skill is loaded before its children.
 | a station, platform, guideway, maglev, rail infrastructure | `station-maglev` | `procedural-geometry`, `engineered-environments` |
 | a dense city, towers, podiums, districts, elevated streets | `megacity` | `procedural-geometry`, `engineered-environments`, `interior-mapping` |
 | any large place that must read as working infrastructure | `engineered-environments` | the geometry skills for its parts |
+| lights, lamps, fixtures, a street or hall full of lights, how bright, shadows, what is a real light | `lighting` | `photo-sky` for the sun |
+| bounce light, global illumination, light probes, light maps, baked lighting, a dim interior, ambient that changes by room | `indirect-lighting` | `lighting` first |
 | a player, first or third person, walking, WASD, jump, crouch | `character-kit` | its four children |
 | moving on a capsule, stairs, slopes, moving platforms | `character-walking` | |
 | the player camera, orbit, pointer lock, follow | `character-camera` | |
@@ -54,8 +56,9 @@ stand on, and the measurements of one stage fix the scale of the next.
 1. **Place and scale.** `engineered-environments` for what the place is and how it
    works; the character kit's ruler (1.8 m standing, 2.1 m door, 0.17 m step) even if
    there is no character, so everything is built at a size a person would read.
-2. **Ground and sky.** Terrain or floor first, then `photo-sky`, then `far-shade` if the
-   terrain is large. Everything after this is lit by them.
+2. **Ground, sky and light.** Terrain or floor first, then `photo-sky`, then `far-shade` if the
+   terrain is large, then `lighting` for the sun, the fixtures and the local lights, and
+   `indirect-lighting` where the sun does not reach. Everything after this is lit by them.
 3. **Geometry.** `procedural-geometry` and its specialists (`station-maglev`,
    `megacity`, `pipes`). Build the big masses before the details; decide LOD and
    instancing now, not after.

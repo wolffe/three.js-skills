@@ -320,6 +320,8 @@ A fixture should have:
 
 Use an emissive node (`emissiveNode` on a node material) for the visible light source, and real lights, light probes or baked lighting for illumination.
 
+Concourses and platforms carry hundreds of fixtures: give the ones whose light is seen a real point or spot light with a short cutoff and run them through r187 `ClusteredLighting` (the `lighting` skill); bounce light under canopies and in halls comes from a `LightProbeGrid` (`indirect-lighting`).
+
 Do not make every surface emissive.
 
 # Station Glass

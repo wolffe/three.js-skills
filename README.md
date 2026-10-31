@@ -7,9 +7,9 @@
 **Specialist Three.js skills for Cursor, Claude Code, Codex and ChatGPT.**
 **Geometry, shaders, materials, particles, fluids, and more.**
 
-[![Version](https://img.shields.io/badge/version-0.0.4-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-0.0.5-blue.svg)](version.json)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-26-orange.svg)](skills/)
+[![Skills](https://img.shields.io/badge/skills-28-orange.svg)](skills/)
 [![Three.js](https://img.shields.io/badge/three.js-0.187.0-black.svg)](https://threejs.org/)
 [![WebGPU](https://img.shields.io/badge/WebGPU-TSL-blueviolet.svg)](https://threejs.org/docs/#api/en/renderers/webgpu/WebGPURenderer)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-black.svg)](https://code.claude.com/docs)
@@ -49,7 +49,7 @@ The CLI asks which skills and which agents to install to; add `--all --yes` to t
 skill for every agent it finds in the project, or `--global` to install for every project.
 Listing: [skills.sh/wolffe/three.js-skills](https://skills.sh/wolffe/three.js-skills).
 
-**Claude Code, as a plugin** (all 26 skills, invoked as `/threejs-skills:<name>`):
+**Claude Code, as a plugin** (all 28 skills, invoked as `/threejs-skills:<name>`):
 
 ```
 /plugin marketplace add wolffe/three.js-skills
@@ -86,7 +86,7 @@ Projects built with these skills, in the browser, on Three.js and WebGPU:
 | [Hard Road](https://hardroad.xyz/) | a free post-apocalyptic driving simulator: 226 km of tarmac, gravel and dirt across a cold, deserted Alaskan island, with rain, snow, a day-night cycle and a trailer to hitch | `jolt-driving`, `photo-sky`, `snow-weather`, `card-grass`, `far-shade`, `ocean-water`, `procedural-geometry` |
 | [Vault 80](https://vault80.com/3d/) | a catalog of fifteen Three.js and WebGPU games, simulations and experiments in vanilla JavaScript with no build step: a quiet tide, billboard grass, a dead city, an O'Neill cylinder, a pixel material builder and more | `tsl-materials` and its children, `water`, `card-grass`, `megacity`, `engineered-environments`, `character-kit` |
 
-## Skills (26)
+## Skills (28)
 
 ### Orchestration
 
@@ -122,6 +122,13 @@ Projects built with these skills, in the browser, on Three.js and WebGPU:
 | `station-maglev` | stations, platforms, guideways, switches, supports, circulation | |
 | `megacity` | dense futuristic city architecture: massing, facades, podiums, districts | |
 | `engineered-environments` | any large built place as a working system: ground and orientation, infrastructure hierarchy, human scale, repetition, storytelling | |
+
+### Lighting
+
+| Skill | Use for | Ships |
+| --- | --- | --- |
+| `lighting` | the general light skill: sun and sky fill, fixtures versus emission, point and spot budgets with cutoffs, and r187 `ClusteredLighting` for streets, halls and interiors with hundreds or thousands of point and spot lights | |
+| `indirect-lighting` | baked diffuse GI: r187 `LightProbeGrid` (spherical-harmonic probes, GPU-baked with bounces, lighting every material by position) and `LightMapper` (the same irradiance baked into a `uv1` light map); for interiors, concourses, under bridges and street canyons | |
 
 ### Character
 
@@ -261,11 +268,12 @@ something the next needs. `SKILLS_GUIDE.md` has the decision trees.
 ## Project Structure
 
 ```
-skills/                      26 skills in 7 category folders; the source of truth
+skills/                      28 skills in 8 category folders; the source of truth
   ├── orchestration/         threejs-director, the router
   ├── materials/             tsl-materials and its seven children
   ├── geometry/              procedural-geometry, pipes, signage
   ├── environments/          engineered-environments, station-maglev, megacity
+  ├── lighting/              lighting, indirect-lighting
   ├── character/             character-kit and its four children
   ├── outdoor/               photo-sky, snow-weather, card-grass, ocean-water, far-shade
   └── physics/               jolt-driving

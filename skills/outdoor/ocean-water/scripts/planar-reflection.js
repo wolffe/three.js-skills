@@ -19,6 +19,7 @@ export class PlanarReflection {
     const o = { ...PLANAR_REFLECTION_DEFAULTS, ...options };
     this.renderer = renderer;
     this.rt = new THREE.RenderTarget(o.size, o.size, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, type: o.type });
+    this.rt.texture.colorSpace = THREE.LinearSRGBColorSpace; // r187 pipeline keys include the target's colour space: match the renderer's framebuffer target so a null-target compileAsync builds this pass's pipelines
     this.camera = new THREE.PerspectiveCamera();
     this.textureMatrix = new THREE.Matrix4(); // world -> [0,1]^2 of rt (projective; divide by w)
     this.planeY = 0;

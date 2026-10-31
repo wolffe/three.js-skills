@@ -40,6 +40,10 @@ still ponds, wet floors, and "capture one layer only" reflections such as a vehi
   material (see the `water` skill)
 - not for a physically simulated sea (FFT, shallow-water solver): this is an analytic sum of waves, cheap
   and deterministic, with CPU-side height queries that match the drawn surface
+- screen-space reflections instead of the mirror when the camera is low, the water is seen over a
+  short distance and only what is on screen needs to reflect (a harbour from the quay, a river from
+  a bridge): the `water` skill, Reflections. The mirror stays for horizon views, where the sky dome
+  and the far coast that should reflect are off screen
 
 ## Ocean API
 
@@ -262,8 +266,14 @@ where the shore train breaks (depth ~1.4 m). Keep them off the sea mirror's laye
   only converts rows to half floats; the inline bake (`rowsPerFrame: 12`, ~1.5 ms of `heightAt` per frame
   with a moderate height function) is the fallback.
 - Use `isActive` so inland nothing runs: hidden sheet, no mirror, no bake.
-- Warm the mirror at boot: one `renderMirror` with the sheet forced visible compiles the reflection's
-  materials behind the loader.
+- Warm-up on r187: `compileAsync` skips reflector and shadow passes during precompilation, so one real
+  `renderMirror` with the sheet forced visible, behind the loader, is still the only way to compile the
+  reflection's materials. Everything else the sea draws with comes out of one plain
+  `renderer.compileAsync(scene, camera)` with no render target set: builds and pipelines are keyed by the
+  target's attachment state, and the renderer's framebuffer target matches the HalfFloat mirror targets once
+  those carry `texture.colorSpace = THREE.LinearSRGBColorSpace` (the kit sets it on both mirrors; the colour
+  space is part of the pipeline key). Serialise `compileAsync` calls and never compile with a render target
+  set; the snow-weather skill's Warm-up note has the two traps and the measurements.
 - `resolutionScale` 0.5 is the sweet spot; the normal distortion hides the softness. Keep `bounces: false`
   (the kit sets it).
 - `PlanarReflection` at 512 px for a one-layer capture (a vehicle into puddles) is cheap; run it only when
