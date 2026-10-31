@@ -1,5 +1,5 @@
 // First-person look and third-person orbit for a walking character.
-// Three.js 0.186.1 / WebGPU. Depends on an input object with consumeMouseDelta().
+// Three.js 0.187.0 / WebGPU. Depends on an input object with consumeMouseDelta().
 import * as THREE from 'three/webgpu';
 
 /** @param {THREE.PerspectiveCamera} camera @param {{ fov?: number }} [opts] */

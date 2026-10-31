@@ -5,7 +5,7 @@ description: Use when a large streamed terrain needs hill, ridge and tree shade 
 
 # Far Shade
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 The companion file `scripts/far-shade.tsl.js` is the atlas, the writer and the shader node. Copy it into the project; it imports only from `three/webgpu` and `three/tsl`.
 

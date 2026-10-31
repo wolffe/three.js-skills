@@ -5,7 +5,7 @@ description: Create dense futuristic residential and commercial architecture ins
 
 # Megacity Urban Architecture Style
 
-Target: Three.js 0.186.1, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); no WebGL fallback, no GLSL.
+Target: Three.js 0.187.0, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); no WebGL fallback, no GLSL.
 
 ## Purpose
 

@@ -5,7 +5,7 @@ description: Create realistic procedural water and wet surfaces with Three.js TS
 
 # Water
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 ## Water response
 

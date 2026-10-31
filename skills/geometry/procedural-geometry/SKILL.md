@@ -5,7 +5,7 @@ description: Create realistic procedural Three.js geometry for large engineered 
 
 # Procedural Geometry for Engineered Environments
 
-Target: Three.js 0.186.1, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); WebGPU only, no WebGL fallback, no GLSL strings.
 
 ## Purpose
 

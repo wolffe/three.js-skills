@@ -5,7 +5,7 @@ description: Fake rooms behind the windows of buildings that cannot be entered, 
 
 # Interior Mapping
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 The companion file `scripts/windowMaterial.tsl.js` is the material. Copy it into the project; it imports only from `three/webgpu` and `three/tsl`.
 

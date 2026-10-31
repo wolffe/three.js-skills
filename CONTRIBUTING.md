@@ -10,7 +10,7 @@ of awesome-gamedev-agent-skills, so a skill here can be submitted there unchange
 
 ## Ground rules
 
-- **Target.** Three.js 0.186.1, `three/webgpu` and `three/tsl`. WebGPU only: no WebGL
+- **Target.** Three.js 0.187.0, `three/webgpu` and `three/tsl`. WebGPU only: no WebGL
   fallback, no GLSL strings, no model files. A skill that needs something else says so
   in its first paragraph.
 - **One skill, one subject.** A skill covers one material, one kind of geometry, one
@@ -18,7 +18,7 @@ of awesome-gamedev-agent-skills, so a skill here can be submitted there unchange
   names it.
 - **Measurements over adjectives.** Say 2.1 m, not "tall enough". Every number should
   come from something that was built and looked at; say so when it was not.
-- **Short code, run code.** Examples are short and written against 0.186.1. If an example
+- **Short code, run code.** Examples are short and written against 0.187.0. If an example
   has not been run, say that in the Notes. A shipped source file must at least pass a
   syntax check under Node, and the README says how far it was run.
 

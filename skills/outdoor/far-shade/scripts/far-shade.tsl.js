@@ -16,7 +16,7 @@
 //   fs.setSun(sunDirection);                         // world-space unit vector TOWARD the sun
 //   fs.upload();
 //
-// Written against three r186.
+// Written against three r187.
 
 import * as THREE from 'three/webgpu';
 import { Fn, uniform, varying, texture, positionWorld, cameraPosition, materialColor, float, vec4, mix, step,

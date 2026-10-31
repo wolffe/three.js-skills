@@ -6,7 +6,7 @@
 // Frame order (see SKILL.md): ocean.update(camera, dt, sunDir) -> ocean.renderMirror(renderer, camera)
 // -> renderer.render(scene, camera). Never let the reflector run nested inside the scene render.
 //
-// Written against three r185/r186. TSL names move between releases: if an import fails, check
+// Written against three r185 to r187. TSL names move between releases: if an import fails, check
 // `three/tsl` in the installed version before rewriting anything.
 
 import * as THREE from 'three/webgpu';

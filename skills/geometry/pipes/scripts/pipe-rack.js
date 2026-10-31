@@ -16,7 +16,7 @@
  * It is written against the kernel of the procedural-models library shipped beside it (procedural-models.js:
  * Geo, prism, cyl, tube, box, rbox, boltsAt, MAT, the matrix helpers); registerModel(pipeRack) adds this
  * model to it. Copy both files into the project together.
- * Written against three 0.186.1.
+ * Written against three 0.187.0.
  */
 import { Geo, P2, prism, cyl, tube, box, rbox, boltsAt, MAT, T, X, RX, HALF, TAU } from './procedural-models.js';
 

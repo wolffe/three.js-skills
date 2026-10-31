@@ -5,7 +5,7 @@ description: Use when a large terrain needs ground cover (meadow, hill grass, sn
 
 # Card Grass
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 The companion file `scripts/card-grass.tsl.js` is the material, the placement and the tile meshes. Copy it into the project; it imports only from `three/webgpu` and `three/tsl`. `references/make-atlas.md` builds the atlas it samples.
 

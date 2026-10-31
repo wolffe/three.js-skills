@@ -1,11 +1,11 @@
 ---
 name: character-kit
-description: Put a playable walking character into any Three.js 0.186.1 WebGPU scene. Use when a scene, game or simulation needs a first or third person character that walks, runs, crouches and jumps over level geometry. Parents character-walking, character-camera, character-model and character-input.
+description: Put a playable walking character into any Three.js 0.187.0 WebGPU scene. Use when a scene, game or simulation needs a first or third person character that walks, runs, crouches and jumps over level geometry. Parents character-walking, character-camera, character-model and character-input.
 ---
 
 # Character kit
 
-Target: Three.js 0.186.1, WebGPU renderer (`three/webgpu`), TSL (`three/tsl`), Jolt 1.1.0
+Target: Three.js 0.187.0, WebGPU renderer (`three/webgpu`), TSL (`three/tsl`), Jolt 1.1.0
 (`jolt-physics` WASM) for the capsule. No WebGL fallback, no GLSL, no model files.
 
 A playable character is four independent pieces and a thin wiring layer. Keep them

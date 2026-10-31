@@ -15,7 +15,7 @@
 //   // every frame, with the camera you render the eye view with (NOT a shadow camera):
 //   updateGrassView(mat, camera);
 //
-// Written against three r186. Requirements: the tile mesh is translated only (no rotation or scale); the atlas
+// Written against three r187. Requirements: the tile mesh is translated only (no rotation or scale); the atlas
 // is an sRGB texture with alpha, ClampToEdge, mipmapped.
 
 import * as THREE from 'three/webgpu';

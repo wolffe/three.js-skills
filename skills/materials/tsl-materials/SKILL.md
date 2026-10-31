@@ -5,7 +5,7 @@ description: Create physically convincing custom materials and shaders with Thre
 
 # TSL Materials
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 Prefer reusable TSL node graphs and material functions over monolithic shaders.
 

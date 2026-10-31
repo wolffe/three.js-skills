@@ -5,7 +5,7 @@ description: Combine realistic TSL materials into coherent multi-material object
 
 # Material Composition
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 Complex objects should be composed from physically distinct surfaces rather than forced into one universal shader.
 

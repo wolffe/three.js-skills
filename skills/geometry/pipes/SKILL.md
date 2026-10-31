@@ -5,7 +5,7 @@ description: "Create believable procedural pipework, ducts and conduits in Three
 
 # Pipes
 
-Target: Three.js 0.186.1, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); WebGPU only, no WebGL fallback, no GLSL strings.
 
 Create pipework that reads as an engineered service, not as decoration. Build it from procedural geometry, drawn through one pipework system (an instanced unit-shape set, below). Do not model each pipe by hand with separate cylinder meshes.
 

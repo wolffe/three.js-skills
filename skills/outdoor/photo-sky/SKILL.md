@@ -5,7 +5,7 @@ description: Use when a scene needs a photographic sky that follows a day/night 
 
 # Photo Sky
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 Companion files in this folder:
 - `scripts/photo-sky.tsl.js`: the sky. Copy it into the project; it imports only from `three/webgpu` and `three/tsl`.

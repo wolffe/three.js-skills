@@ -1,11 +1,11 @@
 ---
 name: character-camera
-description: First-person look and third-person orbit cameras for a walking character in Three.js 0.186.1, with drag or pointer-lock steering, scroll zoom and smoothed follow. Use when a scene needs a player camera attached to a moving body. Ships character-camera.js.
+description: First-person look and third-person orbit cameras for a walking character in Three.js 0.187.0, with drag or pointer-lock steering, scroll zoom and smoothed follow. Use when a scene needs a player camera attached to a moving body. Ships character-camera.js.
 ---
 
 # Character camera
 
-Target: Three.js 0.186.1 WebGPU. `scripts/character-camera.js` exports
+Target: Three.js 0.187.0 WebGPU. `scripts/character-camera.js` exports
 `createCameraManager`, `createFirstPersonCamera` and `createThirdPersonCamera`. They
 depend only on `three/webgpu` and on an input object that provides
 `consumeMouseDelta()` (see `character-input`).

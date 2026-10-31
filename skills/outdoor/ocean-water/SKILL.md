@@ -5,7 +5,7 @@ description: Use when a Three.js WebGPU scene needs a large open sea or coast th
 
 # Ocean water
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL
 fallback, no GLSL strings.
 
 This is the implementation kit for open water. The principles (reflection vs transmission, depth absorption,
@@ -206,9 +206,11 @@ where the shore train breaks (depth ~1.4 m). Keep them off the sea mirror's laye
 ## Pitfalls and lessons
 
 - **The mirror must be a top-level pass.** Left to itself, `reflector()` renders from inside the scene
-  render when the sea is drawn (a nested pass). Nested passes are keyed as their own render context
-  (r185/r186 key contexts by call depth and target shape), so every material visible in the reflection
-  compiles again the first time it is seen there: stalls of hundreds of ms on first sight of a new area. The
+  render when the sea is drawn (a nested pass). Up to r186 nested passes were keyed as their own render
+  context (by call depth and target shape), so every material visible in the reflection compiled again
+  the first time it was seen there: stalls of hundreds of ms on first sight of a new area. r187 shares
+  node builds across call depths (three.js #35014), which removes most of that cost, but the top-level
+  pass is still the layout the kit is built around and the whitelist below depends on it. The
   kit wraps `updateBefore` to do nothing unless `renderMirror` is calling it, and `renderMirror` passes a
   hand-made frame `{ scene, camera, renderer, material }`. Call it every frame the sea is visible.
 - **Do not alternate mirror frames.** Rendering the reflection every other frame produced a 2:1 frame-time
@@ -267,5 +269,5 @@ where the shore train breaks (depth ~1.4 m). Keep them off the sea mirror's laye
 - `PlanarReflection` at 512 px for a one-layer capture (a vehicle into puddles) is cheap; run it only when
   its strength is above ~0.01 and ease the strength rather than toggling, so a stale target is never read.
 - The code has been exercised headless (construction, CPU wave heights, seabed bake, mirror maths) against
-  r186; the TSL fragment graph is a faithful port of a shipped shader but compile it once in the target
-  project before relying on it.
+  r186, and its imports were re-checked against r187; the TSL fragment graph is a faithful port of a
+  shipped shader but compile it once in the target project before relying on it.

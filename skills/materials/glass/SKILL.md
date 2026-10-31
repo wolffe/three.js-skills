@@ -5,7 +5,7 @@ description: Create realistic architectural, vehicle, train and porthole glass w
 
 # Glass
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 Base the material on physical transmission rather than simply lowering opacity. Use the physical node material model where appropriate: transmission, IOR, thickness, attenuation, roughness, specular response and environment reflections.
 

@@ -16,7 +16,7 @@
 //   const mat = createWindowMaterial({ dressing: { venetian: 1 } });
 //   scene.add(new THREE.Mesh(new THREE.PlaneGeometry(1.2, 1.4), mat));
 //
-// Written against three r186; TSL names move between releases, so if an import
+// Written against three r187; TSL names move between releases, so if an import
 // fails, check `three/tsl` in the installed version before rewriting anything.
 
 import * as THREE from 'three/webgpu';

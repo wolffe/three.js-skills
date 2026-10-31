@@ -7,7 +7,7 @@ description: Create realistic futuristic train stations, platforms, railway infr
 
 Create believable, high-quality transportation infrastructure for a futuristic setting (city, district, station, ship) using procedural Three.js geometry.
 
-Target: Three.js 0.186.1, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); no WebGL fallback, no GLSL.
+Target: Three.js 0.187.0, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); no WebGL fallback, no GLSL.
 
 Use Three.js BufferGeometry, Groups and ES6 JavaScript modules. Do not use GLB, GLTF, FBX, OBJ or pre-made meshes unless explicitly requested.
 

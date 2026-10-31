@@ -1,11 +1,11 @@
 ---
 name: character-model
-description: A procedural blocky humanoid for Three.js 0.186.1 WebGPU, built from boxes with hip, knee and shoulder joints, with a walk cycle, crouch and airborne poses driven by the walker's state. Use when a third-person character needs a visible body without model files. Ships character-model.js.
+description: A procedural blocky humanoid for Three.js 0.187.0 WebGPU, built from boxes with hip, knee and shoulder joints, with a walk cycle, crouch and airborne poses driven by the walker's state. Use when a third-person character needs a visible body without model files. Ships character-model.js.
 ---
 
 # Character model
 
-Target: Three.js 0.186.1 WebGPU, `MeshStandardNodeMaterial`, flat shading. No model
+Target: Three.js 0.187.0 WebGPU, `MeshStandardNodeMaterial`, flat shading. No model
 files, no skinning, no animation clips: the figure is a small hierarchy of boxes and
 the animation is three numbers per frame.
 

@@ -18,7 +18,7 @@
 //   await snow.init(camera);                              // warms both compute pipelines
 //   snow.update(dt, camera, spells.snowFieldInput(snow.count));   // per frame (weather-spells.js)
 //
-// Written against three r186.1; if an import fails, check `three/tsl` in the installed version.
+// Written against three r187; if an import fails, check `three/tsl` in the installed version.
 
 import * as THREE from 'three/webgpu';
 import {

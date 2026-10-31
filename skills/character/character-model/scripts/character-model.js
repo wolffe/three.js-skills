@@ -1,5 +1,5 @@
 // Procedural blocky humanoid: boxes with hip, knee and shoulder joints and a
-// three-number animation (speed, grounded, crouch). Three.js 0.186.1 / WebGPU.
+// three-number animation (speed, grounded, crouch). Three.js 0.187.0 / WebGPU.
 import * as THREE from 'three/webgpu';
 
 const STUD = 0.3;

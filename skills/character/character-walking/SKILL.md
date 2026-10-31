@@ -1,11 +1,11 @@
 ---
 name: character-walking
-description: Walking, running, crouching and jumping on a physics capsule in Three.js 0.186.1 with Jolt 1.1.0. Use when a character has to move over level geometry, climb stairs and slopes, ride moving platforms, and not slide off edges. Ships walking-controller.js.
+description: Walking, running, crouching and jumping on a physics capsule in Three.js 0.187.0 with Jolt 1.1.0. Use when a character has to move over level geometry, climb stairs and slopes, ride moving platforms, and not slide off edges. Ships walking-controller.js.
 ---
 
 # Character walking
 
-Target: Three.js 0.186.1 WebGPU, Jolt 1.1.0 (`jolt-physics` WASM, `jolt-physics.wasm-compat.js`).
+Target: Three.js 0.187.0 WebGPU, Jolt 1.1.0 (`jolt-physics` WASM, `jolt-physics.wasm-compat.js`).
 
 `scripts/walking-controller.js` has two parts:
 

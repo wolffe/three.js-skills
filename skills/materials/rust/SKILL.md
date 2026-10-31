@@ -5,7 +5,7 @@ description: Create realistic procedural rust, oxidation and corrosion with Thre
 
 # Rust and Corrosion
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 Rust is a physical surface transformation, not merely an orange colour.
 

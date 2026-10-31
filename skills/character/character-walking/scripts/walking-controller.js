@@ -1,4 +1,4 @@
-// Character walking on a Jolt 1.1.0 CharacterVirtual capsule. Three.js 0.186.1 / WebGPU.
+// Character walking on a Jolt 1.1.0 CharacterVirtual capsule. Three.js 0.187.0 / WebGPU.
 // Two parts: a small adapter over Jolt (createJoltCharacter) and the controller that
 // turns input into capsule velocity (createWalker). The controller only uses the
 // adapter's interface, so another physics library can be swapped in behind it.

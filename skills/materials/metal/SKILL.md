@@ -5,7 +5,7 @@ description: Create realistic procedural metal materials with Three.js TSL on We
 
 # Metal
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 ## Physical categories
 

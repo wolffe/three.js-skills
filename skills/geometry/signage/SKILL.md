@@ -5,7 +5,7 @@ description: Create realistic signage, markings, labels and decals for futuristi
 
 # Signage
 
-Target: Three.js 0.186.1, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); WebGPU only, no WebGL fallback, no GLSL strings.
 
 Prefer texture-based decals or dedicated sign geometry for most signage. Do not create individual 3D letters for every ordinary sign unless the letters are physically raised, illuminated or close enough to justify geometry.
 

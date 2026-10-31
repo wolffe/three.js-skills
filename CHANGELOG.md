@@ -6,6 +6,19 @@ All notable changes to this catalog are recorded here. The format follows
 
 ## [Unreleased]
 
+## [0.0.4] - 2026-10-31
+
+### Changed
+
+- Target moved to Three.js 0.187.0 (r187). Every `three/tsl`, `three/webgpu` and
+  `three/addons` import in the shipped scripts and in the SKILL.md snippets resolves against
+  0.187.0; none of the r187 migration items (custom light registration, PMREM on cube render
+  targets, struct storage buffers as arrays, `pixelationPass` size, iridescence thickness
+  range) is used by any skill. The PMREM `fromScene` call in `photo-sky` is unchanged.
+- `ocean-water`: the nested-pass pitfall now says that r187 shares node builds across call
+  depths (three.js #35014), so the first-sight stall it describes is mostly gone; the
+  top-level mirror pass stays as the layout the kit is built around.
+
 ## [0.0.3] - 2026-10-30
 
 ### Added

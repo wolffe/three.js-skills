@@ -5,7 +5,7 @@ description: Lay out believable large engineered environments in Three.js, as sy
 
 # Engineered Environments
 
-Target: Three.js 0.186.1, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); no WebGL fallback, no GLSL.
+Target: Three.js 0.187.0, WebGPU renderer (`three/webgpu`) and TSL node materials (`three/tsl`); no WebGL fallback, no GLSL.
 
 Create a coherent engineered place, not a collection of disconnected props.
 

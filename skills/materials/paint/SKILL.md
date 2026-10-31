@@ -5,7 +5,7 @@ description: Create realistic painted surfaces with Three.js TSL on WebGPU. Use 
 
 # Paint
 
-Target: Three.js 0.186.1, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
+Target: Three.js 0.187.0, `three/webgpu` and TSL node materials from `three/tsl`; WebGPU only, no WebGL fallback, no GLSL strings.
 
 Treat paint as a layered surface rather than a single colour.
 

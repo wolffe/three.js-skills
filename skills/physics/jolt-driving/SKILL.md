@@ -5,7 +5,7 @@ description: Use when a Three.js scene needs a drivable wheeled vehicle (car, tr
 
 # Jolt driving
 
-Target: Three.js 0.186.1 (`three` for the maths; the kit draws nothing) and jolt-physics 1.0.0, the `wasm-compat` build. Three companion files sit in this folder. Copy them into the project. They import only `three`, and the caller passes in the Jolt namespace it initialised:
+Target: Three.js 0.187.0 (`three` for the maths; the kit draws nothing) and jolt-physics 1.0.0, the `wasm-compat` build. Three companion files sit in this folder. Copy them into the project. They import only `three`, and the caller passes in the Jolt namespace it initialised:
 
 - `scripts/jolt-world.js`: `createJoltWorld(Jolt, options)` and `createHeightfieldRing(world, samplesFor, options)`
 - `scripts/jolt-vehicle.js`: `class WheeledVehicle`, `VEHICLE_DEFAULTS`, `SURFACES`

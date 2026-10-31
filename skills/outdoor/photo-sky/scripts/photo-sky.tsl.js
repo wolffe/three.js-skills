@@ -16,7 +16,7 @@
 //   scene.add(sky.mesh); await sky.load(dayIndex);
 //   // per frame: sky.update({ dt, sunDir, overcast, rain, bright, day, camera });
 //
-// Written against three r186; TSL names move between releases, so if an import fails, check `three/tsl` in the
+// Written against three r187; TSL names move between releases, so if an import fails, check `three/tsl` in the
 // installed version before rewriting anything.
 
 import * as THREE from 'three/webgpu';
